@@ -1,49 +1,41 @@
-# ADHD Budget App 🧠💸
+# Studio Eien — A Web Design System ✒️
 
-A budgeting tool inspired by Simple Bank — thoughtfully redesigned for neurodivergent users, especially those with ADHD. Built using **Astro + Vue + Pinia**, this app focuses on simplicity, clarity, and supportive automation.
+A showcase for **The Eien Framework**, a web design system built around a calm, monochrome aesthetic that lets the work speak for itself. Inspired by the clarity of manga and inkwork, this system provides a foundation for creating clean, content-focused web experiences.
 
 ---
 
 ## 🎯 Vision
 
-This app helps users:
+This design system provides:
 
-- Clearly see what they can safely spend (`Safe-to-Spend`)
-- Automatically split income into bills, goals, and vaults
-- Reduce decision fatigue and budgeting burnout
-- Get gentle visual feedback and positive reinforcement
+- A set of reusable, themeable layout primitives (`cluster`, `sidebar`, `switcher`, etc.).
+- A core component library (`card`, `btn`, `tag`) with a distinct monochrome style.
+- A design token-based architecture for colors, spacing, and typography.
+- A focus on minimalism, accessibility, and modern CSS
 
 ---
 
 ## 🚧 Roadmap
 
-### ✅ Phase 1: Core Budgeting System
+### ✅ Phase 1: Foundation & Showcase
 
-- [x] Manual Transaction Entry
-- [x] Safe-to-Spend Calculation
-- [x] Budget Categories & Savings Goals
-- [x] Rolling Budgets (carry over unused money)
+- [x] Define core design tokens (colors, typography, spacing).
+- [x] Build foundational layout components.
+- [x] Create core UI components (`card`, `btn`, `input`).
+- [x] Develop a static showcase landing page with Astro.
 
 ### ✅ Phase 2: Light Automation & Smarter UX
 
-- [x] Quick Add Buttons for Transactions
-- [x] Recurring Bills & Expenses
-- [x] Auto-Categorization of Transactions
-- [x] Lazy Mode (Estimated Spending)
+- [ ] Add interactive examples using Vue components.
+- [ ] Create dedicated documentation pages for each component.
+- [ ] Implement a live theme switcher (e.g., dark/light mode toggle).
+- [ ] Publish the system as an NPM package.
 
-### ✅ Phase 3: Gamification & Persona-Style Visual Novel UI
+### 💡 Phase 3: Expansion
 
-- [x] Character Portraits that react to spending
-- [x] GSAP + PixiJS animations (Budget Buddy)
-- [x] Budget Streak System & Milestone Rewards
-- [x] Smart Alerts: "Overspending on Fast Food?"
-- [x] Forecasting: Future Safe-to-Spend trends
-
-### ✅ Phase 4: Advanced Automation & AI
-
-- [x] CSV Import for Bank Transactions
-- [x] OCR for Receipt Scanning
-- [x] Rule-Based Auto-Savings (e.g., "Save $5 when I eat out")
+- [ ] Add more complex components (e.g., modals, dropdowns).
+- [ ] Develop data visualization components.
+- [ ] Explore additional themes beyond monochrome.
 
 ---
 
@@ -75,6 +67,7 @@ npm run dev
 Open your browser to http://localhost:4321.
 
 ## 📁 Project Structure
+
 ```
 src/
 ├── components/
@@ -89,15 +82,5 @@ src/
 ├── composables/ # Reusable logic (Vue Composition API)
 ├── types/ # TypeScript interfaces
 ```
-
-## 🧠 Why This Exists
-
-Most budgeting apps are cluttered, stressful, or too rigid. This one is:
-
-- Visual and encouraging 🖼️
-
-- Built around executive function challenges 🧩
-
-- Focused on progress, not punishment 🧘‍♂️
 
 Built with 💙 for neurodivergent creators.

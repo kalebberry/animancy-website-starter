@@ -1,25 +1,24 @@
 @use "../abstracts" as *;
 
-.transaction-list {
-    margin-top: 2rem;
-
-    ul {
-        list-style: none;
-        padding: 0;
-    }
-
-    .transaction-item {
-        display: flex;
-        justify-content: space-between;
-        padding: 0.75rem;
-        border-bottom: 1px solid #eee;
-
-        .amount.negative {
-            color: #e53935;
-        }
-
-        .amount.positive {
-            color: #43a047;
-        }
-    }
+/* Monochrome theme */
+:root {
+  color-scheme: light dark;
+  --bg: #fff;
+  --fg: #111;
+  --muted: #6f6f6f;
+  --border: #1a1a1a;
+  --border-weak: #d9d9d9;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b0b0b;
+    --fg: #efefef;
+    --muted: #a0a0a0;
+    --border: #e6e6e6;
+    --border-weak: #2a2a2a;
+  }
+}
+body {
+  background: var(--bg);
+  color: var(--fg);
 }
