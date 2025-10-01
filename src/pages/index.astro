@@ -1,0 +1,369 @@
+---
+import Layout from '@/Layouts/DefaultLayout.astro';
+const title = 'Studio Eien — Web Design';
+const description = 'A clean, black‑and‑white anime landing page built with your CSS grid system.';
+---
+
+<Layout title={title} description={description}>
+	<main class='flow' style='--space:3rem'>
+		<!-- HERO -->
+		<section class='container hero--bw flow'>
+			<div class='flow' style='--space:1rem'>
+				<h1 class='fs-step-6' style='margin:0'>Eien Anime</h1>
+				<p class='fs-step-1' style='max-inline-size: 36ch'>
+					Curated series, crisp art, and thoughtful notes — all in a calm, monochrome aesthetic that
+					lets the work speak for itself.
+				</p>
+				<nav class='cluster' style='--gutter:.75rem' aria-label='Primary'>
+					<a href='#featured' class='btn btn--primary'>Browse Collection</a>
+					<a href='#articles' class='btn'>Read Essays</a>
+					<a href='#newsletter' class='btn btn--ghost'>Subscribe</a>
+				</nav>
+			</div>
+			<div
+				class='poster-grid grid grid--fit'
+				data-cols='2'
+				style='--gutter:1rem; --grid-min-item-size:10rem'
+			>
+				{
+					['NEON', 'BLADE', 'SPIRIT', 'EDEN'].map((label, i) => (
+						<figure class='poster card--bw' aria-label={label}>
+							<div class='poster__art' role='img' aria-hidden='true' />
+							<figcaption class='fs-step-00'>{label}</figcaption>
+						</figure>
+					))
+				}
+			</div>
+		</section>
+
+		<!-- FEATURED SERIES -->
+		<section id='featured' class='container flow' style='--space:1rem'>
+			<div class='repel' style='--gutter:1rem'>
+				<h2 class='fs-step-3'>Featured series</h2>
+				<div class='cluster' style='--gutter:.5rem'>
+					<button class='tag' aria-pressed='true'>All</button>
+					<button class='tag'>Action</button>
+					<button class='tag'>Sci‑Fi</button>
+					<button class='tag'>Drama</button>
+				</div>
+			</div>
+			<div class='grid grid--dense' data-cols='3' style='--gutter:1rem; --grid-min-item-size:14rem'>
+				{
+					Array.from({ length: 6 }).map((_, i) => (
+						<article class='card--bw flow' style='--space:.5rem; padding:1rem'>
+							<div class='thumb' aria-hidden='true' />
+							<header class='flow' style='--space:.25rem'>
+								<h3 class='fs-step-1' style='margin:0'>
+									Series {i + 1}
+								</h3>
+								<p class='fs-step-00' style='opacity:.75'>
+									12 eps · sub & dub
+								</p>
+							</header>
+							<p class='fs-step-0'>
+								A brief, spoiler‑free description to tease tone, themes, and vibes.
+							</p>
+							<div class='cluster' style='--gutter:.5rem'>
+								<a href='#' class='btn btn--sm'>
+									Details
+								</a>
+								<a href='#' class='btn btn--sm btn--ghost'>
+									Add to list
+								</a>
+							</div>
+						</article>
+					))
+				}
+			</div>
+		</section>
+
+		<!-- COLLECTIONS / SIDEBAR -->
+		<section id='collections' class='container flow' style='--space:1rem'>
+			<h2 class='fs-step-3'>Collections</h2>
+			<div
+				class='sidebar'
+				style='--gutter:1rem; --sidebar-target-width:18rem; --sidebar-content-min-width:55%'
+			>
+				<aside class='card--bw flow' style='--space:.5rem; padding:1rem'>
+					<h3 class='fs-step-1'>Filters</h3>
+					<div class='flow' style='--space:.5rem'>
+						<label class='cluster' style='--gutter:.5rem'>
+							<input type='checkbox' checked hidden /><span class='tag' aria-pressed='true'>
+								Completed
+							</span>
+						</label>
+						<label class='cluster' style='--gutter:.5rem'>
+							<input type='checkbox' hidden /><span class='tag'>Ongoing</span>
+						</label>
+						<label class='cluster' style='--gutter:.5rem'>
+							<input type='checkbox' hidden /><span class='tag'>Movie</span>
+						</label>
+						<label class='cluster' style='--gutter:.5rem'>
+							<input type='checkbox' hidden /><span class='tag'>OVA</span>
+						</label>
+					</div>
+				</aside>
+				<div class='grid' data-cols='3' style='--gutter:1rem; --grid-min-item-size:12rem'>
+					{
+						Array.from({ length: 9 }).map((_, i) => (
+							<article class='card--bw flow' style='--space:.5rem; padding:1rem'>
+								<div class='thumb' aria-hidden='true' />
+								<h3 class='fs-step-1' style='margin:0'>
+									Collection {i + 1}
+								</h3>
+								<p class='fs-step-00' style='opacity:.75'>
+									Curated picks • 6 titles
+								</p>
+							</article>
+						))
+					}
+				</div>
+			</div>
+		</section>
+		<!-- GALLERY / MASONRY -->
+		<section id='gallery' class='container flow' style='--space:1rem'>
+			<h2 class='fs-step-3'>Gallery</h2>
+			<div class='masonry__container'>
+				<div class='masonry-grid' style='--gutter:1rem; --masonry-cols:3'>
+					{
+						Array.from({ length: 12 }).map((_, i) => (
+							<figure
+								class={`tile--bw ${['tone--dots', 'tone--hatch', 'tone--lines', 'tone--cross'][i % 4]} ${['tile--h1', 'tile--h2', 'tile--h3'][i % 3]}`}>
+								<figcaption class='fs-step-00'>Panel {i + 1}</figcaption>
+							</figure>
+						))
+					}
+				</div>
+			</div>
+		</section>
+
+		<!-- ARTICLES / SWITCHER -->
+		<section id='articles' class='container flow' style='--space:1rem'>
+			<h2 class='fs-step-3'>Articles & essays</h2>
+			<div class='switcher' style='--gutter:1rem; --switcher-target-container-width: 60rem'>
+				<article class='card--bw flow' style='--space:.5rem; padding:1rem'>
+					<h3 class='fs-step-1' style='margin:0'>The elegance of limited palettes</h3>
+					<p class='fs-step-0'>
+						How black & white art direction sharpens tone, silhouette, and rhythm — with examples
+						from classics.
+					</p>
+					<a class='btn btn--sm' href='#'>Read</a>
+				</article>
+				<article class='card--bw flow' style='--space:.5rem; padding:1rem'>
+					<h3 class='fs-step-1' style='margin:0'>Motion as storytelling</h3>
+					<p class='fs-step-0'>Why restrained animation can be more expressive than maximalism.</p>
+					<a class='btn btn--sm' href='#'>Read</a>
+				</article>
+				<article class='card--bw flow' style='--space:.5rem; padding:1rem'>
+					<h3 class='fs-step-1' style='margin:0'>From ink to pixels</h3>
+					<p class='fs-step-0'>Translating manga panel composition into screen language.</p>
+					<a class='btn btn--sm' href='#'>Read</a>
+				</article>
+			</div>
+		</section>
+
+		<!-- NEWSLETTER / CTA -->
+		<section id='newsletter' class='container flow' style='--space:1rem'>
+			<h2 class='fs-step-3'>Join the list</h2>
+			<p class='fs-step-0'>One neat email when new collections drop. No noise.</p>
+			<form
+				class='switcher'
+				style='--gutter:.75rem; --switcher-target-container-width: 40rem'
+				onsubmit="event.preventDefault(); this.querySelector('button').textContent='Thanks!';"
+			>
+				<input aria-label='Email' required placeholder='you@domain' class='input-bw' type='email' />
+				<button class='btn btn--primary'>Subscribe</button>
+			</form>
+		</section>
+
+		<!-- Optional Vue mount for interactivity demos -->
+		<section class='container flow' style='--space:1rem'>
+			<div id='interactive-counter' class='card--bw' style='padding:1rem'>
+				<p class='fs-step-00' style='opacity:.75; margin:0'>
+					Vue mount ready: <code>#interactive-counter</code>
+				</p>
+			</div>
+		</section>
+
+		<style is:global>
+			/* Monochrome theme */
+			:root {
+				color-scheme: light dark;
+				--bg: #fff;
+				--fg: #111;
+				--muted: #6f6f6f;
+				--border: #1a1a1a;
+				--border-weak: #d9d9d9;
+			}
+			@media (prefers-color-scheme: dark) {
+				:root {
+					--bg: #0b0b0b;
+					--fg: #efefef;
+					--muted: #a0a0a0;
+					--border: #e6e6e6;
+					--border-weak: #2a2a2a;
+				}
+			}
+			body {
+				background: var(--bg);
+				color: var(--fg);
+			}
+
+			/* Hero */
+			.hero--bw {
+				position: relative;
+				padding-block: clamp(2rem, 3vw + 2rem, 6rem);
+				border-radius: 1rem;
+				overflow: clip;
+			}
+			.hero--bw::before {
+				content: '';
+				position: absolute;
+				inset: 0;
+				pointer-events: none;
+				opacity: 0.06;
+				background: repeating-linear-gradient(45deg, #000 0 1px, transparent 1px 22px);
+				mix-blend-mode: multiply;
+			}
+
+			/* Posters */
+			.poster {
+				display: grid;
+				gap: 0.5rem;
+			}
+			.poster__art {
+				aspect-ratio: 3/4;
+				border: 1px solid var(--border);
+				background: linear-gradient(180deg, #000 0 35%, transparent 35% 100%),
+					repeating-linear-gradient(135deg, #fff 0 3px, #000 3px 4px);
+				filter: grayscale(100%);
+				transition: transform 0.2s ease;
+			}
+			.poster__art:hover {
+				transform: translateY(-2px);
+			}
+			.poster figcaption {
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+				color: var(--muted);
+			}
+
+			/* Thumbs & cards */
+			.thumb {
+				aspect-ratio: 16/9;
+				border: 1px solid var(--border);
+				background: repeating-linear-gradient(135deg, #000 0 2px, #fff 2px 4px);
+				filter: grayscale(100%);
+			}
+			.card--bw {
+				border: 1px solid var(--border);
+				background: var(--bg);
+				border-radius: 0.75rem;
+				box-shadow: none;
+			}
+
+			/* Buttons & inputs */
+			.btn {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5ch;
+				padding: 0.6rem 0.9rem;
+				border: 1px solid var(--border);
+				background: var(--bg);
+				color: var(--fg);
+				border-radius: 0.6rem;
+				cursor: pointer;
+				text-decoration: none;
+			}
+			.btn--primary {
+				background: #000;
+				color: #fff;
+			}
+			.btn--ghost {
+				background: transparent;
+			}
+			.btn--sm {
+				padding: 0.45rem 0.7rem;
+				font-size: var(--fs-step-00);
+			}
+			.btn:focus-visible {
+				outline: 2px solid currentColor;
+				outline-offset: 2px;
+			}
+			.input-bw {
+				inline-size: 100%;
+				padding: 0.65rem 0.8rem;
+				border: 1px solid var(--border);
+				border-radius: 0.6rem;
+				background: var(--bg);
+				color: var(--fg);
+			}
+
+			/* Chips */
+			.tag {
+				border: 1px solid var(--border);
+				background: var(--bg);
+				color: var(--fg);
+				border-radius: 999px;
+				padding: 0.35rem 0.7rem;
+				cursor: pointer;
+			}
+
+			/* Masonry tiles */
+			.tile--bw {
+				position: relative;
+				display: grid;
+				align-content: end;
+				gap: 0.4rem;
+				padding: 0.5rem;
+				border: 1px solid var(--border);
+				border-radius: 0.5rem;
+				overflow: hidden;
+				background: var(--bg);
+			}
+			.tile--bw::before {
+				content: '';
+				position: absolute;
+				inset: 0;
+				opacity: 0.18;
+				pointer-events: none;
+				filter: grayscale(100%);
+			}
+			.tile--h1 {
+				block-size: 12rem;
+			}
+			.tile--h2 {
+				block-size: 16rem;
+			}
+			.tile--h3 {
+				block-size: 22rem;
+			}
+			.tile--bw figcaption {
+				color: var(--muted);
+				z-index: 1;
+			}
+			/* Screentone patterns */
+			.tone--dots::before {
+				background: radial-gradient(#000 10%, transparent 11%) 0 0/12px 12px;
+			}
+			.tone--hatch::before {
+				background: repeating-linear-gradient(45deg, #000 0 1px, transparent 1px 10px);
+			}
+			.tone--lines::before {
+				background: repeating-linear-gradient(0deg, #000 0 2px, transparent 2px 8px);
+			}
+			.tone--cross::before {
+				background: repeating-linear-gradient(45deg, #000 0 1px, transparent 1px 10px),
+					repeating-linear-gradient(-45deg, #000 0 1px, transparent 1px 10px);
+			}
+
+			/* Utilities: subtle max width on long lines */
+			#articles p {
+				max-inline-size: 60ch;
+			}
+		</style>
+
+		<!-- Your existing Vue bundle can be hooked here if needed -->
+		<script type='module' src='/src/hydrate/landing.ts'></script>
+	</main>
+</Layout>
