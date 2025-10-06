@@ -3,7 +3,7 @@
 /* Hero */
 .hero--bw {
   position: relative;
-  padding-block: clamp(2rem, 3vw + 2rem, 6rem);
+
   border-radius: 1rem;
   overflow: clip;
 }
@@ -18,6 +18,10 @@
   mix-blend-mode: multiply;
 }
 
+section {
+  padding-block: clamp(1rem, 2rem, 3rem);
+}
+
 /* Posters */
 .poster {
   display: grid;
@@ -26,7 +30,8 @@
 .poster__art {
   aspect-ratio: 3/4;
   border: 1px solid var(--border);
-  background: linear-gradient(180deg, #000 0 35%, transparent 35% 100%), repeating-linear-gradient(135deg, #fff 0 3px, #000 3px 4px);
+  background: linear-gradient(180deg, #000 0 35%, transparent 35% 100%),
+    repeating-linear-gradient(135deg, #fff 0 3px, #000 3px 4px);
   filter: grayscale(100%);
   transition: transform 0.2s ease;
 }
@@ -153,7 +158,8 @@
   background: repeating-linear-gradient(0deg, #000 0 2px, transparent 2px 8px);
 }
 .tone--cross::before {
-  background: repeating-linear-gradient(45deg, #000 0 1px, transparent 1px 10px), repeating-linear-gradient(-45deg, #000 0 1px, transparent 1px 10px);
+  background: repeating-linear-gradient(45deg, #000 0 1px, transparent 1px 10px),
+    repeating-linear-gradient(-45deg, #000 0 1px, transparent 1px 10px);
 }
 
 /* Utilities: subtle max width on long lines */
