@@ -43,7 +43,8 @@ $__size-step: math.div($__size-range, $__col-range);
 /* --- Mixins ---------------------------------------------------------- */
 @mixin base-grid-rules {
   display: grid;
-  grid-template-columns: repeat(var(--grid-placement, auto-fit), minmax(var(--grid-min-item-size, 16rem), 1fr));
+  /* If --grid-cols is set, use it to create explicit columns. Otherwise, use the auto-fit logic. */
+  grid-template-columns: var(--grid-cols, repeat(var(--grid-placement, auto-fit), minmax(var(--grid-min-item-size, 16rem), 1fr)));
   gap: var(--gutter, 1rem);
   grid-auto-rows: minmax(min-content, auto);
 
@@ -54,22 +55,24 @@ $__size-step: math.div($__size-range, $__col-range);
 }
 
 @mixin emit-cols-presets($selector, $child: null) {
-  #{$selector}[data-cols="1"]#{$child} {
-    @if $child == null {
+  @if $child == null {
+    #{$selector}[data-cols="1"] {
       --grid-min-item-size: 100%;
-    } @else {
+    }
+    @for $i from 2 through $grid-max-cols {
+      #{$selector}[data-cols="#{$i}"] {
+        $min-size: $grid-min-size-start - (($i - 2) * $__size-step);
+        --grid-min-item-size: max(#{$min-size}, calc((100% - (var(--gutter, 1rem) * #{$i - 1})) / #{$i}));
+      }
+    }
+  } @else {
+    #{$selector}[data-cols="1"]#{$child} {
       flex-basis: 100%;
       min-width: 100%;
     }
-  }
-
-  @for $i from 2 through $grid-max-cols {
-    $min-size: $grid-min-size-start - (($i - 2) * $__size-step);
-
-    #{$selector}[data-cols="#{$i}"]#{$child} {
-      @if $child == null {
-        --grid-min-item-size: max(#{$min-size}, calc((100% - (var(--gutter, 1rem) * #{$i - 1})) / #{$i}));
-      } @else {
+    @for $i from 2 through $grid-max-cols {
+      #{$selector}[data-cols="#{$i}"]#{$child} {
+        $min-size: $grid-min-size-start - (($i - 2) * $__size-step);
         flex-basis: calc((100% - (var(--gutter, 1rem) * #{$i - 1})) / #{$i});
         min-width: $min-size;
       }
@@ -87,6 +90,10 @@ $__size-step: math.div($__size-range, $__col-range);
 
   &--dense {
     grid-auto-flow: dense;
+  }
+
+  &--subgrid-rows {
+    grid-template-rows: subgrid;
   }
 }
 
