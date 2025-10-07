@@ -97,6 +97,11 @@ $__size-step: math.div($__size-range, $__col-range);
   }
 }
 
+.subgrid-card {
+  display: grid;
+  grid-template-columns: subgrid;
+}
+
 .grid-container {
   container-type: inline-size;
 
@@ -110,6 +115,26 @@ $__size-step: math.div($__size-range, $__col-range);
     .grid [data-span] {
       grid-column: span 1 !important;
     }
+  }
+}
+
+/* --- Component-level Container Query Example --- */
+.cq-card {
+  container-type: inline-size;
+  container-name: card;
+}
+
+.cq-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+@container card (min-width: 25rem) {
+  .cq-card__content {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
   }
 }
 
